@@ -1,7 +1,7 @@
 # aws_monitoring
 Ye README recruiter ko dhyan me rakhkar likha gaya hai. Isme folder structure nahi hai, pehle screenshots hain, phir project ki description.
 
-```markdown
+markdown
 # AWS Infrastructure Monitoring using Terraform, Ansible, Prometheus & Grafana
 
 ## Dashboard Preview
