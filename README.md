@@ -1,5 +1,4 @@
 # aws_monitoring
-Ye README recruiter ko dhyan me rakhkar likha gaya hai. Isme folder structure nahi hai, pehle screenshots hain, phir project ki description.
 
 markdown
 # AWS Infrastructure Monitoring using Terraform, Ansible, Prometheus & Grafana
@@ -138,24 +137,4 @@ This project helped me gain practical experience in:
 # Author
 
 **Muhammad Shahid**
-
-Junior DevOps Engineer
-
-**Skills**
-
-- AWS
-- Terraform
-- Ansible
-- Docker
-- Linux
-- Prometheus
-- Grafana
-- Git & GitHub
-- CI/CD
-
----
-
-⭐ Thank you for visiting this repository. Feedback and suggestions are always welcome.
-```
-
-**Ek chhoti correction:** Tumne message me **"PMSMTV server yani mobile phone, SMTV use kiya tha"** likha hai. Agar tumhara matlab **SMTP server** tha (email alerts ke liye), to README me maine **SMTP email notifications** likha hai, kyunki monitoring projects me alerts ke liye SMTP hi use hota hai.
+Devops Engineer
