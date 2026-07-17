@@ -86,11 +86,11 @@ The environment consists of three AWS EC2 instances.
 - Grafana
 - Node Exporter
 
-### App Server 1
+### Node Server 1
 
 - Node Exporter
 
-### App Server 2
+### Node Server 2
 
 - Node Exporter
 
