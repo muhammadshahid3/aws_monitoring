@@ -1,7 +1,5 @@
-
-
 #########################
-# Import Existing Key Pair
+# Key Pair
 #########################
 
 resource "aws_key_pair" "terra" {
@@ -14,8 +12,9 @@ resource "aws_key_pair" "terra" {
 #########################
 
 resource "aws_security_group" "monitoring_sg" {
+
   name        = "monitoring-sg"
-  description = "Allow all traffic"
+  description = "Monitoring Project Security Group"
   vpc_id      = data.aws_vpc.default.id
 
   ingress {
@@ -50,24 +49,53 @@ resource "aws_security_group" "monitoring_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # Internal Communication
+
+  ingress {
+    description = "Allow Internal Traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    self        = true
+  }
+
   egress {
+
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+
   }
 
-  ingress {
-  from_port   = 0
-  to_port     = 0
-  protocol    = "-1"
-  cidr_blocks = ["0.0.0.0/0"]
+  tags = {
+    Name = "Monitoring-SG"
+  }
+
 }
-}
+
 #########################
-# Latest Ubuntu AMI
+# Configuration Server
 #########################
 
+resource "aws_instance" "configuration" {
+
+  ami                    = var.ami
+  instance_type          = var.instance_type
+  key_name               = aws_key_pair.terra.key_name
+  vpc_security_group_ids = [aws_security_group.monitoring_sg.id]
+
+  root_block_device {
+    volume_size = 20
+    volume_type = "gp3"
+  }
+
+  tags = {
+    Name = "Configuration-Server"
+    Role = "Ansible"
+  }
+
+}
 
 #########################
 # Monitoring Server
@@ -75,10 +103,10 @@ resource "aws_security_group" "monitoring_sg" {
 
 resource "aws_instance" "monitoring" {
 
-  ami                    = "ami-01a00762f46d584a1"
+  ami                    = var.ami
   instance_type          = var.instance_type
-  vpc_security_group_ids = [aws_security_group.monitoring_sg.id]
   key_name               = aws_key_pair.terra.key_name
+  vpc_security_group_ids = [aws_security_group.monitoring_sg.id]
 
   root_block_device {
     volume_size = 20
@@ -87,19 +115,21 @@ resource "aws_instance" "monitoring" {
 
   tags = {
     Name = "Monitoring-Server"
+    Role = "Monitoring"
   }
+
 }
 
 #########################
-# App Server 1
+# Node 1
 #########################
 
-resource "aws_instance" "app1" {
+resource "aws_instance" "node1" {
 
-  ami                    = "ami-01a00762f46d584a1"
+  ami                    = var.ami
   instance_type          = var.instance_type
-  vpc_security_group_ids = [aws_security_group.monitoring_sg.id]
   key_name               = aws_key_pair.terra.key_name
+  vpc_security_group_ids = [aws_security_group.monitoring_sg.id]
 
   root_block_device {
     volume_size = 20
@@ -107,20 +137,22 @@ resource "aws_instance" "app1" {
   }
 
   tags = {
-    Name = "App-Server-1"
+    Name = "Node-1"
+    Role = "Application"
   }
+
 }
 
 #########################
-# App Server 2
+# Node 2
 #########################
 
-resource "aws_instance" "app2" {
+resource "aws_instance" "node2" {
 
-  ami                    = "ami-01a00762f46d584a1"
+  ami                    = var.ami
   instance_type          = var.instance_type
-  vpc_security_group_ids = [aws_security_group.monitoring_sg.id]
   key_name               = aws_key_pair.terra.key_name
+  vpc_security_group_ids = [aws_security_group.monitoring_sg.id]
 
   root_block_device {
     volume_size = 20
@@ -128,6 +160,8 @@ resource "aws_instance" "app2" {
   }
 
   tags = {
-    Name = "App-Server-2"
+    Name = "Node-2"
+    Role = "Application"
   }
+
 }
