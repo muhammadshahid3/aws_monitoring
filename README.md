@@ -56,6 +56,20 @@ This project demonstrates how to build an automated monitoring solution on AWS u
 Terraform provisions the AWS infrastructure, while Ansible automates the installation and configuration of the monitoring stack. Prometheus collects metrics from all EC2 instances, and Grafana provides real-time dashboards for infrastructure monitoring.
 
 ---
+monitoring-project/
+│── ansible.cfg
+│── inventory.ini
+│── playbook.yml
+└── roles/
+    ├── node_exporter/
+    │   └── tasks/
+    │       └── main.yml
+    ├── prometheus/
+    │   └── tasks/
+    │       └── main.yml
+    └── grafana/
+        └── tasks/
+            └── main.yml
 
 # Infrastructure
 
