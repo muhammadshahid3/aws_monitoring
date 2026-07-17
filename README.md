@@ -40,8 +40,9 @@ Shows real-time server performance metrics including CPU, Memory, Disk, and Netw
 Three AWS EC2 instances were deployed:
 
 - Monitoring Server
-- App Server 1
-- App Server 2
+- Configuration SErver
+- Node1 Server
+- Node2 Server 2
 
 ---
 
