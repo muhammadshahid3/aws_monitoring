@@ -33,7 +33,9 @@ Shows real-time server performance metrics including CPU, Memory, Disk, and Netw
 
 ### AWS Infrastructure
 
-![EC2 Instances](screenshots/4th.png)
+
+<img width="1915" height="851" alt="image" src="https://github.com/user-attachments/assets/faf3f228-b893-4fe6-bb8b-712d776f4dc2" />
+
 
 Three AWS EC2 instances were deployed:
 
