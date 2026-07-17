@@ -10,6 +10,7 @@ markdown
 ![CPU Dashboard](screenshots/1st.png)
 
 Real-time CPU utilization monitoring of AWS EC2 instances using Prometheus and Grafana.
+<img width="1567" height="766" alt="image" src="https://github.com/user-attachments/assets/bb819080-b944-4fa0-9ae9-45ad88cbf2d6" />
 
 ---
 
